@@ -5,6 +5,23 @@ The scripts included in this repository were developed in the paper [**Defining 
 
 You are free to use the available model, as long as you cite properly.
 
-You can download the model here: [**PUCPR-FLAIR-CLINICAL-POS-TAGGING-MODEL**](https://drive.google.com/file/d/1EfoO_DzW5-TGvphp3tUMZlEAcYgFPD8J/view?usp=sharing)
+You can download the model here [**PUCPR-FLAIR-CLINICAL-POS-TAGGING-MODEL**](https://drive.google.com/file/d/1EfoO_DzW5-TGvphp3tUMZlEAcYgFPD8J/view?usp=sharing), or load it directly from your code.
 
-A tutorial on how to load the model into Flair and use the POS-Tagging can be found here: [Flair POS-Tagging Tutorial](https://github.com/flairNLP/flair/blob/master/resources/docs/TUTORIAL_7_TRAINING_A_MODEL.md)
+```python
+from flair.data import Sentence
+from flair.models import SequenceTagger
+
+# Load our portuguese clinical model
+tagger = SequenceTagger.load('pt-pos-clinical')
+
+# Create a sentence
+sentence = Sentence("Quadro de dor torácica compatível com angina instável de alto risco")
+    
+# Predict the POS-tags
+tagger.predict(sentence)
+
+# Print tagged sentence
+print(sentence.to_tagged_string())
+```
+
+A complete tutorial on how to load the model into Flair and use the POS-Tagging can be found here: [Flair Tagging Tutorial](https://github.com/flairNLP/flair/blob/master/resources/docs/TUTORIAL_2_TAGGING.md)
